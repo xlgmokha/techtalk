@@ -1,0 +1,33 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">TechTalk</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="active"><a href="#">About</a></li>
+        </ul>
+        <ul class="nav pull-right">
+          <% if current_user %>
+            <li> <%= link_to 'Share', new_testimonial_path %></li>
+            <li> <a href="#">yikes</a></li>
+            <li class="divider-vertical"></li>
+            <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Hi <%= current_user.name %>! <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="divider"></li>
+              <li><%= link_to "Sign Out", signout_path %></li>
+            </ul>
+          <% else %>
+            <li><%= link_to "Sign in with Github", "/auth/github" %></li>
+          <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

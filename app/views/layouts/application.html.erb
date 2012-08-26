@@ -1,14 +1,41 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Techtalk</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TechTalks</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="MoKhan.ca">
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+  </head>
+  <body>
+    <%= render "shared/header" %>
+    <div class="container">
+      <% if(flash.any?) -%>
+        <div class="row">
+          <div class="span12">
+            <% flash.each do |key, value| -%>
+              <% Array(value).uniq.each do |message| -%>
+                <div class="alert alert-<%= key %>">
+                  <a class="close" data-dismiss="alert" href="#">×</a>
+                  <%= message %>
+                </div>
+              <% end -%>
+            <% end -%>
+          </div>
+        </div>
+      <% end -%>
+      <%= yield %>
+      <hr>
+      <%= debug(params) if Rails.env.development? %>
+      <footer><p></p></footer>
+    </div>
+    <%= javascript_include_tag "application" %>
+    <%= yield :javascript %>
+  </body>
 </html>
