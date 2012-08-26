@@ -20,6 +20,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem 'omniauth-github'
 
